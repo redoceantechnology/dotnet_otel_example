@@ -1,3 +1,14 @@
+using System.Threading.Tasks;
+using Amazon.Lambda.Core;
+using Dynatrace.OpenTelemetry;
+using Dynatrace.OpenTelemetry.Instrumentation.AwsLambda;
+using OpenTelemetry;
+using OpenTelemetry.Instrumentation.AWSLambda;
+using OpenTelemetry.Trace;
+
+[assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
+
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAWSLambdaHosting(LambdaEventSource.HttpApi);
 // Add services to the container.
